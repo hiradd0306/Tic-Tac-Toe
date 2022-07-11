@@ -25,6 +25,9 @@ class TicTacToeGame:
         # Player turn
         self.turn = 0 # X's turn if 0, O's turn if 1
 
+        # Game Over Flag
+        self.game_over = False
+
     def print_board(self):
         print(f"|{self.board[1]} {self.board[2]} {self.board[3]}|")
         print(f"|{self.board[4]} {self.board[5]} {self.board[6]}|")
@@ -40,6 +43,10 @@ class TicTacToeGame:
         for i in self.board.keys():
             if self.board[i] is self.NO_MARK:
                 self.available_squares.append(i)
+        if len(self.available_squares) == 0:
+            print("The game is a draw.")
+            self.game_over = True
+            return
         print("Availabe squares are: ")
         print(self.available_squares)
 
@@ -63,7 +70,7 @@ class TicTacToeGame:
                     if square not in self.o_player_con:
                         win_con_checker += 1
             if win_con_checker == 0:
-                return True     
+                self.game_over = True     
         return False
 
     def show_turn(self):

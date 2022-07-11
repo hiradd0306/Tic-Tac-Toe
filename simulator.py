@@ -6,6 +6,9 @@ tg.init_board()
 while True:
     tg.show_turn()
     tg.show_available_squares()
+    if tg.game_over:
+        break
+
     while True:
         try: 
             square = int(input("Choose a square: "))
@@ -17,8 +20,10 @@ while True:
             break
 
     tg.mark_square(square)
-    if tg.check_win():
+    tg.print_board()
+    tg.check_win()
+    if tg.game_over:
         winner = 'X' if tg.turn==0 else 'O'
         print(f"GG, {winner} wins!!") 
+        break
     tg.swap_turn()
-    tg.print_board()
