@@ -8,6 +8,9 @@ class TicTacToeGame:
         # Board
         self.board = dict()
         
+        # Available Squares
+        self.available_squares = []
+
         # Win conditions
         self.win_con = [
             (1,2,3), (4,5,6), (7,8,9),
@@ -33,23 +36,20 @@ class TicTacToeGame:
             self.board[i+1] =  self.NO_MARK
 
     def show_available_squares(self):
-        available_squares = []
         for i in self.board.keys():
             if self.board[i] is self.NO_MARK:
-                available_squares.append(i)
+                self.available_squares.append(i)
         print("Availabe squares are: ")
-        print(available_squares)
+        print(self.available_squares)
 
-    def mark_square(self, input):
-        if type(input) != int:
-            print("Please enter a valid integer.")
+    def mark_square(self, square):
         if self.turn == 0:
-            self.board[input] = self.X_MARK
-            self.x_player_con.append(input)
+            self.board[square] = self.X_MARK
+            self.x_player_con.append(square)
             
         else:
-            self.board[input] = self.O_MARK
-            self.o_player_con.append(input)
+            self.board[square] = self.O_MARK
+            self.o_player_con.append(square)
 
     def check_win(self):
         for con in self.win_con:
