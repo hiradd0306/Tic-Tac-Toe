@@ -21,6 +21,7 @@ while True:
 
     tg.mark_square(square)
     tg.print_board()
+    print("")
     tg.check_win()
     if tg.game_over:
         winner = 'X' if tg.turn==0 else 'O'

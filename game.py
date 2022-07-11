@@ -47,9 +47,7 @@ class TicTacToeGame:
             print("The game is a draw.")
             self.game_over = True
             return
-        print("Availabe squares are: ")
-        print(self.available_squares)
-
+            
     def mark_square(self, square):
         if self.turn == 0:
             self.board[square] = self.X_MARK
