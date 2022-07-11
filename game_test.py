@@ -46,3 +46,10 @@ if tg.check_win():
     print("The game is over, someone won!")
 else:
     print("The game continues.")
+
+# Testing show_turn() and swap_turn()
+print("\nTesting show_turn():")
+tg.show_turn()
+print("After swapping turns, it should be O's turn.")
+tg.swap_turn()
+tg.show_turn()

@@ -15,8 +15,12 @@ class TicTacToeGame:
             (1,5,9), (3,5,7)
         ]
 
-        # Player conditions
-        self.player_con = []
+        # Players' conditions
+        self.x_player_con = []
+        self.o_player_con = []
+
+        # Player turn
+        self.turn = 0 # X's turn if 0, O's turn if 1
 
     def print_board(self):
         print(f"|{self.board[1]} {self.board[2]} {self.board[3]}|")
@@ -39,18 +43,37 @@ class TicTacToeGame:
     def mark_square(self, input):
         if type(input) != int:
             print("Please enter a valid integer.")
-        self.board[input] = self.X_MARK
-        self.player_con.append(input)
+        if self.turn == 0:
+            self.board[input] = self.X_MARK
+            self.x_player_con.append(input)
+            
+        else:
+            self.board[input] = self.O_MARK
+            self.o_player_con.append(input)
 
     def check_win(self):
         for con in self.win_con:
             win_con_checker = 0
             for square in con:
-                if square not in self.player_con:
-                    win_con_checker += 1
+                if self.turn == 0:
+                    if square not in self.x_player_con:
+                        win_con_checker += 1
+                else:
+                    if square not in self.o_player_con:
+                        win_con_checker += 1
             if win_con_checker == 0:
-                return True
-        
+                return True     
         return False
+
+    def show_turn(self):
+        if self.turn == 0:
+            print("It is X's turn.")
+        else:
+            print("It is O's turn.")
+
+    def swap_turn(self):
+        self.turn = 0 if self.turn==1 else 1
+    
+
 
 
