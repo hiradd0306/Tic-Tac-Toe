@@ -36,6 +36,7 @@ class TicTacToeGame:
             self.board[i+1] =  self.NO_MARK
 
     def show_available_squares(self):
+        self.available_squares = []
         for i in self.board.keys():
             if self.board[i] is self.NO_MARK:
                 self.available_squares.append(i)
